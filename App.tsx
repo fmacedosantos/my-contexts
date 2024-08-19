@@ -5,7 +5,12 @@ import { StyleSheet, Text, View } from 'react-native';
 import HomeScreen from './src/screens/HomeScreen';
 import UserScreen from './src/screens/UserScreen';
 
-const {Navigator, Screen} = createStackNavigator()
+export type RootStackParamList = {
+  Home: undefined;
+  User: {username: string}
+}
+
+const {Navigator, Screen} = createStackNavigator<RootStackParamList>()
 
 export default function App() {
   return (
