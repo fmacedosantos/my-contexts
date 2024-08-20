@@ -1,6 +1,10 @@
 import { createContext } from "react";
 
-export const UserContext = createContext({}) 
+interface UserContextProps{
+    nome: string
+}
+
+export const UserContext = createContext<UserContextProps | undefined>(undefined) 
 
 export default function UserContextProvider({children}: any){
     const contextValue = {nome: 'Felipão'}
