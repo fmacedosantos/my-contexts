@@ -1,7 +1,8 @@
 import { RouteProp } from '@react-navigation/native';
-import React from 'react';
+import React, { useContext } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { RootStackParamList } from '../../App';
+import { UserContext } from '../contexts/UserContext';
 
 type UserScreenProps = {
   route: RouteProp<RootStackParamList, "User">
@@ -9,6 +10,8 @@ type UserScreenProps = {
 
 export default function UserScreen({route}: UserScreenProps) {
   const {username} = route.params
+  const UserContextValue = useContext(UserContext)
+  const nome = UserContextValue.nome
 
   return (
     <View style={styles.container}>
