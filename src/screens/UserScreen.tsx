@@ -11,11 +11,12 @@ type UserScreenProps = {
 export default function UserScreen({route}: UserScreenProps) {
   const {username} = route.params
   const UserContextValue = useContext(UserContext)
-  const nome = UserContextValue.nome
+  const nome = UserContextValue?.nome || "Nenhum nome salvo"
 
   return (
     <View style={styles.container}>
         <Text style={styles.text}>Bem vindo(a) {username}</Text>
+        <Text style={styles.text}>Bem vindo(a) {nome}</Text>
     </View>
   );
 }
