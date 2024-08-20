@@ -1,6 +1,7 @@
 import { createContext, useState } from "react";
 
 interface UserContextProps{
+    name: string
     username: string
     save: (user: string) => void
 }
@@ -11,6 +12,7 @@ export default function UserContextProvider({children}: any){
     const [name, setName] = useState<string>("")
 
     const contextValues: UserContextProps = {
+        name: "Felipe",
         username: name,
         save: saveLoginUserToCache
     }
