@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Alert, Button, StyleSheet, Text, TextInput, View } from 'react-native';
 import { RootStackParamList } from '../../App';
 import { StackNavigationProp } from '@react-navigation/stack';
+import { UserContext } from '../contexts/UserContext';
 
 type HomeScreenProps = {
   navigation: StackNavigationProp<RootStackParamList, "Home">
@@ -9,9 +10,11 @@ type HomeScreenProps = {
 
 export default function HomeScreen({navigation}: HomeScreenProps) {
   const  [input, setInput] = useState("")
+  const userContext = useContext(UserContext)
 
   const navigateToUserScreen = () => {
     if(!(input == "")){
+      userContext?.save(input)
       navigation.navigate('User', {username: input})
     } else {
       Alert.alert("Parâmetro obrigatório:", "Escreva seu nome para prosseguir!")
